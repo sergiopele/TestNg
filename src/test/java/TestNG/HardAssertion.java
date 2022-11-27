@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class HardAssertion {
 	public WebDriver driver;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -25,7 +25,7 @@ public class HardAssertion {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 	
-	@Test
+	@Test(groups = "regression")
 	public void invalidCredentials() {
 		WebElement userName = driver.findElement(By.id("txtUsername"));
 		userName.sendKeys("ffd");
@@ -44,7 +44,7 @@ public class HardAssertion {
 		
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void afterMethod() {
 		driver.quit();
 	}

@@ -16,7 +16,7 @@ public class TestNgExample {
 	public static WebDriver driver;
 	
 	//writing down all precondition
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void SetUpBrowser() {
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
@@ -25,11 +25,11 @@ public class TestNgExample {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
 	//post condition for test case
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void afterMethod(){
 		driver.quit();
 	}
-	@Test
+	@Test(groups = "regression")
 	public void functionality(){
 		WebElement userName = driver.findElement(By.id("txtUsername"));
 		userName.sendKeys("admin");

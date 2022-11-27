@@ -15,7 +15,7 @@ public class Priority {
 	public static WebDriver driver;
 	
 	//writing down all precondition
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void SetUpBrowser() {
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver();
@@ -25,7 +25,7 @@ public class Priority {
 	}
 	
 	//post condition for test case
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void afterMethod() {
 		driver.quit();
 	}
@@ -40,7 +40,7 @@ public class Priority {
 		logIn.click();
 	}
 	
-	@Test(priority = 1)
+	@Test(priority = 1,groups = "regression")
 	public void LoginButtonVerification() {
 		WebElement logIn = driver.findElement(By.xpath("//*[@id='btnLogin']"));
 		System.out.println(logIn.isDisplayed());
