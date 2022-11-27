@@ -5,15 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
+import org.testng.asserts.SoftAssert;
 
 import java.util.concurrent.TimeUnit;
 
-public class HardAssertion {
+public class SoftAssertion {
 	public WebDriver driver;
 	
 	@BeforeMethod
@@ -35,12 +34,14 @@ public class HardAssertion {
 		logIn.click();
 		WebElement errorMessage = driver.findElement(By.xpath("//span[@id='spanMessage']"));
 		String actualError = errorMessage.getText();
-		String expectedMSG="Invalid credentia";
-		Assert.assertEquals(actualError,expectedMSG);
+		String expectedMSG = "Invalid credentials";
 		
-		boolean isDisplayed=errorMessage.isDisplayed();
-		Assert.assertTrue(isDisplayed);
+		boolean isDisplayed = errorMessage.isDisplayed();
 		
+		SoftAssert soft = new SoftAssert();
+		soft.assertEquals(actualError, expectedMSG);
+		soft.assertTrue(isDisplayed);
+		soft.assertAll();
 		
 	}
 	
@@ -48,4 +49,5 @@ public class HardAssertion {
 	public void afterMethod() {
 		driver.quit();
 	}
+	
 }
