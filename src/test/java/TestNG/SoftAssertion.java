@@ -34,7 +34,7 @@ public class SoftAssertion {
 		logIn.click();
 		WebElement errorMessage = driver.findElement(By.xpath("//span[@id='spanMessage']"));
 		String actualError = errorMessage.getText();
-		String expectedMSG = "Invalid credentials";
+		String expectedMSG = "Invalid credentia";
 		
 		boolean isDisplayed = errorMessage.isDisplayed();
 		
@@ -43,6 +43,10 @@ public class SoftAssertion {
 		soft.assertTrue(isDisplayed);
 		soft.assertAll();
 		
+	}
+	@Test
+	public void Test(){
+		System.out.println("am test 2");
 	}
 	
 	@AfterMethod

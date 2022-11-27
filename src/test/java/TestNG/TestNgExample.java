@@ -33,7 +33,7 @@ public class TestNgExample {
 	public void functionality(){
 		WebElement userName = driver.findElement(By.id("txtUsername"));
 		userName.sendKeys("admin");
-		WebElement password = driver.findElement(By.xpath("//[@id='txtPassword']"));
+		WebElement password = driver.findElement(By.id("txtPassword"));
 		password.sendKeys("Hum@nhrm123");
 		WebElement logIn = driver.findElement(By.xpath("//*[@id='btnLogin']"));
 		logIn.click();

@@ -35,7 +35,7 @@ public class HardAssertion {
 		logIn.click();
 		WebElement errorMessage = driver.findElement(By.xpath("//span[@id='spanMessage']"));
 		String actualError = errorMessage.getText();
-		String expectedMSG="Invalid credentia";
+		String expectedMSG="Invalid credentials";
 		Assert.assertEquals(actualError,expectedMSG);
 		
 		boolean isDisplayed=errorMessage.isDisplayed();
